@@ -34,6 +34,17 @@ const EmployeeList = () => {
         // fetchEmployees()
     },[])
 
+    const deleteEmployee= (e, employeeId)=>{
+        e.preventDefault()
+        EmployeeService.deleteEmployee(employeeId)
+                            .then(result=>{
+                                console.log("Employee with employee id :" + employeeId + " deleted");
+                                setEmployeeList(prevEmployee => prevEmployee.filter(employee => employee.id !== employeeId))
+                            })
+                            .catch(error => {
+                                console.log("Error occured while deleting the employee with id " + employeeId);
+                            })
+    }
 
     if(loading){
         return <h1>Loading... Shimmmer</h1>
@@ -60,7 +71,7 @@ const EmployeeList = () => {
                 <tbody className="bg-slate-100">
                         {
                             employeeList.map(employee => (
-                                <EmployeeRow employee={employee} key={employee.id}> </EmployeeRow>
+                                <EmployeeRow employee={employee} deleteEmployee ={deleteEmployee} key={employee.id}> </EmployeeRow>
                             ) )
                         }                
                 </tbody>

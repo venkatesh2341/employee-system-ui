@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
+import EmployeeService from '../Services/EmployeeService'
+import { useNavigate }from "react-router-dom";
 
-const EmployeeRow = ({employee}) => {
+
+const EmployeeRow = ({employee, deleteEmployee}) => {
+
   return (
     <tr>
         <td className="px-4 py-2">{employee.id}</td>
@@ -9,7 +13,9 @@ const EmployeeRow = ({employee}) => {
         <td className="px-4 py-2">{employee.emailId}</td>
         <td className=" justify-center space-x-4 flex ">
             <button className="bg-purple-300 rounded-md w-16">Edit</button>
-            <button className="bg-red-300 rounded-md w-16">Delete</button>
+            <button 
+                onClick={(e)=> deleteEmployee(e, employee.id)}
+                className="bg-red-300 rounded-md w-16">Delete</button>
         </td>
     </tr>
   )
