@@ -46,6 +46,10 @@ const EmployeeList = () => {
                             })
     }
 
+    const updateEmployee = (e, employeeId) => {
+        navigate(`/editEmployee/${employeeId}`)
+    }
+
     if(loading){
         return <h1>Loading... Shimmmer</h1>
     }
@@ -71,7 +75,7 @@ const EmployeeList = () => {
                 <tbody className="bg-slate-100">
                         {
                             employeeList.map(employee => (
-                                <EmployeeRow employee={employee} deleteEmployee ={deleteEmployee} key={employee.id}> </EmployeeRow>
+                                <EmployeeRow employee={employee} deleteEmployee ={deleteEmployee} updateEmployee={updateEmployee} key={employee.id}> </EmployeeRow>
                             ) )
                         }                
                 </tbody>
