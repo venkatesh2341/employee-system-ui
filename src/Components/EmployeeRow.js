@@ -1,7 +1,3 @@
-import React, { useState } from 'react'
-import EmployeeService from '../Services/EmployeeService'
-import { useNavigate }from "react-router-dom";
-
 
 const EmployeeRow = ({employee, deleteEmployee, updateEmployee}) => {
 

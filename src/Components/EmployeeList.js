@@ -69,7 +69,7 @@ const EmployeeList = () => {
                     <th className="px-4 py-2 text-left font-semibold text-gray-700">First Name</th>
                     <th className="px-4 py-2 text-left font-semibold text-gray-700">Last Name</th>
                     <th className="px-4 py-2 text-left font-semibold text-gray-700">Email Id</th>
-                    <th className="px-4 py-2 text-left font-semibold text-gray-700 text-right">Actions</th>
+                    <th className="px-4 py-2 font-semibold text-gray-700 text-balance">Actions</th>
                     </tr>
                 </thead>
                 <tbody className="bg-slate-100">

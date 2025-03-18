@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import EmployeeService from '../Services/EmployeeService';
 import { useParams, useNavigate } from "react-router-dom";
 
-
 const EditEmployee = () => {
 
     const {id} = useParams()
@@ -80,8 +79,8 @@ const EditEmployee = () => {
                 className="w-24 rounded-md border bg-green-500 hover:bg-green-600">Update</button>
 
                <button
-                
-                className="w-24 rounded-md border bg-red-500 hover:bg-red-600">Clear</button>
+                onClick={(e) => navigate("/")}
+                className="w-24 rounded-md border bg-red-500 hover:bg-red-600">Cancel</button>
             </div>
 
         </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import EmployeeService from '../Services/EmployeeService';
 import { useNavigate }from "react-router-dom";
+import { VscArrowLeft } from "react-icons/vsc";
 
 
 const AddEmployee = () => {
@@ -44,6 +45,11 @@ const AddEmployee = () => {
     <div className="flex max-w-2xl shadow border-b mx-auto mt-4 bg-gray-100">
         <div className="px-8 py-8">
             <div className="font-thin text-2xl tracking-wider">
+                <button onClick={(e) => { e.preventDefault(); navigate("/")}}
+                    className="hover:bg-slate-300">
+                    <VscArrowLeft />
+                </button>
+                
                 <h1>Add New Employee</h1>
             </div>
 
