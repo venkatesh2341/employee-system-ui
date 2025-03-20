@@ -6,13 +6,16 @@ import EmployeeRow from './EmployeeRow';
 const EmployeeList = () => {
 
     const [employeeList, setEmployeeList] = useState([]);
+    const [filteredEmployeeList, setFilteredEmployeeList] = useState([])
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
+    const [searchText, setSearchText] = useState("");
 
     useEffect(()=>{
         EmployeeService.getEmployeeList()
             .then(data =>{
                 setEmployeeList(data)
+                setFilteredEmployeeList(data)
             })
             .catch(error =>{
                 console.log("Error occured while fetching employee list")
@@ -61,6 +64,16 @@ const EmployeeList = () => {
         onClick={(e) => navigate("/addEmployee")}
         className="bg-slate-600 my-4 ml-2 rounded tracking-wider text-white hover:bg-slate-700 w-36">Add Emplyee</button>
 
+        <input 
+        onChange={(e)=>{
+            const newSearchText = e.target.value
+            setSearchText(newSearchText)
+            console.log(newSearchText + " -- ")
+            const filteredEmployees = employeeList.filter(employee => Object.values(employee).join(' ').toLocaleLowerCase().includes(newSearchText.toLocaleLowerCase()))
+            setFilteredEmployeeList(filteredEmployees)
+        }}
+        className="mx-3 border-b-2 border" type="text" placeholder="Search employee" value={searchText}></input>
+
         <div className="flex mt-4 justify-center">
             <table className="min-w-full table-auto border-separate">
                 <thead>
@@ -74,7 +87,7 @@ const EmployeeList = () => {
                 </thead>
                 <tbody className="bg-slate-100">
                         {
-                            employeeList.map(employee => (
+                            filteredEmployeeList.map(employee => (
                                 <EmployeeRow employee={employee} deleteEmployee ={deleteEmployee} updateEmployee={updateEmployee} key={employee.id}> </EmployeeRow>
                             ) )
                         }                
